@@ -3,11 +3,12 @@ import { Button } from '@/components/ui/button';
 
 interface ProgressHeaderProps {
   completedCount: number;
+  totalWorkoutDays: number;
   progressPercentage: number;
   onReset: () => void;
 }
 
-export const ProgressHeader = ({ completedCount, progressPercentage, onReset }: ProgressHeaderProps) => {
+export const ProgressHeader = ({ completedCount, totalWorkoutDays, progressPercentage, onReset }: ProgressHeaderProps) => {
   return (
     <div className="fade-in">
       <div className="flex items-center justify-between mb-6">
@@ -16,8 +17,8 @@ export const ProgressHeader = ({ completedCount, progressPercentage, onReset }: 
             <Dumbbell className="w-6 h-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Meu Treino</h1>
-            <p className="text-muted-foreground text-sm">Semana atual</p>
+            <h1 className="text-2xl font-bold tracking-tight">Treino - Fase 1</h1>
+            <p className="text-muted-foreground text-sm">Ariel Abrahão Personal</p>
           </div>
         </div>
         <Button
@@ -25,6 +26,7 @@ export const ProgressHeader = ({ completedCount, progressPercentage, onReset }: 
           size="icon"
           onClick={onReset}
           className="text-muted-foreground hover:text-foreground"
+          title="Resetar semana"
         >
           <RotateCcw className="w-5 h-5" />
         </Button>
@@ -33,7 +35,7 @@ export const ProgressHeader = ({ completedCount, progressPercentage, onReset }: 
       <div className="bg-card rounded-xl p-4 mb-6 border border-border">
         <div className="flex items-center justify-between mb-3">
           <span className="text-sm font-medium">Progresso da semana</span>
-          <span className="text-sm font-bold text-primary">{completedCount}/7 dias</span>
+          <span className="text-sm font-bold text-primary">{completedCount}/{totalWorkoutDays} treinos</span>
         </div>
         <div className="h-3 bg-muted rounded-full overflow-hidden">
           <div
@@ -41,9 +43,9 @@ export const ProgressHeader = ({ completedCount, progressPercentage, onReset }: 
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
-        {completedCount === 7 && (
+        {completedCount === totalWorkoutDays && totalWorkoutDays > 0 && (
           <p className="text-primary text-sm font-medium mt-3 text-center">
-            🎉 Semana completa! Parabéns!
+            🎉 Semana completa! Parabéns, Vitor!
           </p>
         )}
       </div>
