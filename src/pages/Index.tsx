@@ -11,6 +11,7 @@ const Index = () => {
     removeExercise,
     resetWeek,
     completedCount,
+    totalWorkoutDays,
     progressPercentage,
   } = useWorkouts();
 
@@ -23,6 +24,7 @@ const Index = () => {
       <div className="max-w-lg mx-auto px-4 py-6 pb-20">
         <ProgressHeader
           completedCount={completedCount}
+          totalWorkoutDays={totalWorkoutDays}
           progressPercentage={progressPercentage}
           onReset={resetWeek}
         />
